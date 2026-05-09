@@ -14,33 +14,16 @@ evaluation_data$date <- as.Date(evaluation_data$date)
 
 dir.create("outputs/figures", recursive = TRUE, showWarnings = FALSE)
 
-# -----------------------------
-# Helper: save readable white-background PNG
-# -----------------------------
 save_plot_png <- function(plot_obj, filename, width = 14, height = 7, res = 300) {
-  if (capabilities("cairo")) {
-    png(
-      filename = filename,
-      width = width,
-      height = height,
-      units = "in",
-      res = res,
-      bg = "white",
-      type = "cairo"
-    )
-  } else {
-    png(
-      filename = filename,
-      width = width,
-      height = height,
-      units = "in",
-      res = res,
-      bg = "white"
-    )
-  }
-  
-  print(plot_obj)
-  dev.off()
+  ggplot2::ggsave(
+    filename = filename,
+    plot = plot_obj,
+    width = width,
+    height = height,
+    dpi = res,
+    bg = "white",
+    device = "png"
+  )
 }
 
 # -----------------------------
@@ -49,13 +32,13 @@ save_plot_png <- function(plot_obj, filename, width = 14, height = 7, res = 300)
 my_theme <- theme_bw(base_size = 18) +
   theme(
     plot.title = element_text(size = 20, face = "bold", color = "black"),
-    plot.subtitle = element_text(size = 15, color = "black"),
-    axis.title = element_text(size = 16, face = "bold", color = "black"),
+    plot.subtitle = element_text(size = 15, color = "pink"),
+    axis.title = element_text(size = 16, face = "bold", color = "red"),
     axis.text = element_text(size = 14, color = "black"),
     legend.title = element_text(size = 15, face = "bold", color = "black"),
-    legend.text = element_text(size = 14, color = "black"),
+    legend.text = element_text(size = 14, color = "blue"),
     legend.position = "right",
-    panel.background = element_rect(fill = "white", color = "black"),
+    panel.background = element_rect(fill = "white", color = "blue"),
     plot.background = element_rect(fill = "white", color = "white"),
     legend.background = element_rect(fill = "white", color = "white"),
     legend.key = element_rect(fill = "white", color = "white"),
