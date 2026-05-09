@@ -1,0 +1,2 @@
+"signal","horizon_days","drawdown_threshold","hit_rate","precision","false_alarm_rate","total_alerts","true_positives","false_positives","false_negatives","true_negatives"
+"High Fragility Regime",21,-0.08,0.015,0.3333,0.0026,6,2,4,131,1511
